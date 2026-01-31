@@ -6,25 +6,56 @@
   <title>Sharma Ji Mushroom Farm & Research Center</title>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
   <style>
+    /* Reset & Fonts */
     * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Roboto', sans-serif; }
-    body { line-height: 1.6; background-color: #f9f9f9; color: #333; }
-    header { background-color: #4caf50; color: white; padding: 20px 0; text-align: center; }
-    nav a { color: white; margin: 0 15px; text-decoration: none; font-weight: bold; }
-    .hero { background: url('https://images.unsplash.com/photo-1615884955479-1c48559d52e5?auto=format&fit=crop&w=1470&q=80') no-repeat center center/cover; height: 400px; display: flex; justify-content: center; align-items: center; color: white; text-shadow: 2px 2px 4px #000; }
-    .hero h1 { font-size: 2.5em; text-align: center; padding: 0 10px; }
-    section { padding: 60px 20px; max-width: 1000px; margin: auto; }
-    h2 { color: #4caf50; margin-bottom: 20px; text-align: center; }
-    .products, .contact-form { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; }
-    .product { background: white; padding: 20px; border-radius: 10px; width: 250px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); text-align: center; }
-    .product img { width: 100%; border-radius: 10px; height: 180px; object-fit: cover; }
-    .product h3 { margin: 15px 0 10px; }
-    .product p { font-size: 0.9em; color: #555; }
-    .price { font-weight: bold; margin-top: 5px; color: #2e7d32; }
-    .btn { display: inline-block; padding: 10px 20px; background: #4caf50; color: white; border-radius: 5px; text-decoration: none; margin-top: 10px; }
-    .contact-form form { flex-direction: column; width: 100%; max-width: 500px; display: flex; }
-    .contact-form input, .contact-form textarea { padding: 10px; margin-bottom: 10px; border-radius: 5px; border: 1px solid #ccc; }
-    footer { text-align: center; padding: 20px; background: #333; color: white; margin-top: 40px; }
-    @media(max-width:600px){ .product { width: 100%; } }
+    body { background: #fdfdfd; color: #333; line-height: 1.6; scroll-behavior: smooth; }
+    a { text-decoration: none; }
+    
+    /* Header */
+    header { background: linear-gradient(90deg,#4caf50,#2e7d32); color: white; padding: 15px 0; position: sticky; top:0; z-index: 100; }
+    header h1 { text-align: center; font-size: 1.8rem; margin-bottom: 5px; }
+    nav { display: flex; justify-content: center; gap: 25px; flex-wrap: wrap; font-weight: bold; }
+    nav a { color: white; transition: color 0.3s; }
+    nav a:hover { color: #ffeb3b; }
+
+    /* Hero Section */
+    .hero { height: 450px; display: flex; justify-content: center; align-items: center; text-align: center;
+      background: url('https://images.unsplash.com/photo-1615884955479-1c48559d52e5?auto=format&fit=crop&w=1470&q=80') no-repeat center center/cover; 
+      color: white; text-shadow: 2px 2px 8px rgba(0,0,0,0.5); }
+    .hero h1 { font-size: 2.8rem; max-width: 900px; padding: 0 20px; }
+
+    /* Sections */
+    section { padding: 80px 20px; max-width: 1200px; margin: auto; }
+    section h2 { text-align: center; font-size: 2.2rem; color: #2e7d32; margin-bottom: 40px; position: relative; }
+    section h2::after { content: ''; display:block; width:60px; height:3px; background:#4caf50; margin:10px auto 0; border-radius:2px; }
+
+    /* About */
+    #about p { text-align:center; max-width: 800px; margin:auto; font-size:1.1rem; color:#555; }
+
+    /* Products Grid */
+    .products { display:grid; grid-template-columns: repeat(auto-fit, minmax(250px,1fr)); gap:30px; }
+    .product { background:white; border-radius:15px; padding:20px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); transition: transform 0.3s, box-shadow 0.3s; display:flex; flex-direction:column; align-items:center; }
+    .product:hover { transform: translateY(-10px); box-shadow: 0 15px 35px rgba(0,0,0,0.2); }
+    .product img { width:100%; height:180px; border-radius:12px; object-fit:cover; margin-bottom:15px; }
+    .product h3 { font-size:1.3rem; color:#2e7d32; margin-bottom:8px; }
+    .product p { font-size:0.95rem; color:#555; text-align:center; }
+    .price { font-weight:bold; margin-top:5px; color:#388e3c; }
+    .btn { display:inline-block; padding:10px 25px; margin-top:12px; background:#4caf50; color:white; border-radius:50px; transition: background 0.3s, transform 0.2s; font-weight:bold; }
+    .btn:hover { background:#2e7d32; transform: scale(1.05); }
+
+    /* Contact */
+    .contact-form { display:flex; flex-direction:column; align-items:center; gap:20px; }
+    .contact-form form { display:flex; flex-direction:column; width:100%; max-width:500px; gap:15px; }
+    .contact-form input, .contact-form textarea { padding:12px; border-radius:8px; border:1px solid #ccc; font-size:1rem; }
+    .contact-info { text-align:center; margin-top:25px; font-size:1rem; color:#555; }
+    .contact-info a { color:#2e7d32; font-weight:bold; transition: color 0.3s; }
+    .contact-info a:hover { color:#4caf50; }
+
+    /* Footer */
+    footer { background:#2e7d32; color:white; text-align:center; padding:20px; margin-top:40px; font-size:0.9rem; }
+
+    /* Responsive */
+    @media(max-width:600px){ .hero h1 { font-size:2rem; } }
   </style>
 </head>
 <body>
@@ -44,7 +75,7 @@
 
 <section id="about">
   <h2>About Us</h2>
-  <p style="text-align:center; max-width: 700px; margin:auto;">
+  <p>
     Sharma Ji Mushroom Farm & Research Center is located in Saptari, Nepal. We grow and sell fresh mushrooms
     and high-quality spawn for local farmers. Our mission is to provide healthy, sustainable mushrooms
     and empower local farming communities.
@@ -60,7 +91,7 @@
       <h3>Oyster Mushroom</h3>
       <p>Fresh and tender Oyster mushrooms for daily cooking.</p>
       <p class="price">Rs 200 / kg</p>
-      <a class="btn" href="mailto:sharmajimushrooms@example.com?subject=Order%20Oyster%20Mushroom">Order Now</a>
+      <a class="btn" href="mailto:sharmajimushroom@gamil.com?subject=Order%20Oyster%20Mushroom">Order Now</a>
     </div>
     <!-- Shiitake Mushroom -->
     <div class="product">
@@ -68,15 +99,15 @@
       <h3>Shiitake Mushroom</h3>
       <p>Rich in flavor, perfect for gourmet dishes.</p>
       <p class="price">Rs 400 / kg</p>
-      <a class="btn" href="mailto:sharmajimushrooms@example.com?subject=Order%20Shiitake%20Mushroom">Order Now</a>
+      <a class="btn" href="mailto:sharmajimushroom@gamil.com?subject=Order%20Shiitake%20Mushroom">Order Now</a>
     </div>
     <!-- Button Mushroom -->
     <div class="product">
       <img src="https://images.unsplash.com/photo-1608231189071-3e0fcd0a0f4b?auto=format&fit=crop&w=400&q=80" alt="Button Mushroom">
       <h3>Button Mushroom</h3>
       <p>Classic white mushrooms, versatile and fresh.</p>
-      <p class="price">Rs 400 / kg</p>
-      <a class="btn" href="mailto:sharmajimushrooms@example.com?subject=Order%20Button%20Mushroom">Order Now</a>
+      <p class="price">Rs 200 / kg</p>
+      <a class="btn" href="mailto:sharmajimushroom@gamil.com?subject=Order%20Button%20Mushroom">Order Now</a>
     </div>
     <!-- Colorful Mushrooms -->
     <div class="product">
@@ -84,7 +115,7 @@
       <h3>Colorful Mushrooms</h3>
       <p>Exotic mushrooms in various colors, perfect for chefs and farms.</p>
       <p class="price">Rs 500 / kg</p>
-      <a class="btn" href="mailto:sharmajimushrooms@example.com?subject=Order%20Colorful%20Mushrooms">Order Now</a>
+      <a class="btn" href="mailto:sharmajimushroom@gamil.com?subject=Order%20Colorful%20Mushrooms">Order Now</a>
     </div>
     <!-- Mushroom Spawn -->
     <div class="product">
@@ -94,30 +125,28 @@
       <p class="price">Rs 450 / kg</p>
       <p class="price">5 kg → Rs 2,250</p>
       <p class="price">10 kg → Rs 4,500</p>
-      <a class="btn" href="mailto:sharmajimushroom@example.com?subject=Order%20Mushroom%20Spawn">Buy Spawn</a>
+      <a class="btn" href="mailto:sharmajimushroom@gamil.com?subject=Order%20Mushroom%20Spawn">Buy Spawn</a>
     </div>
   </div>
 </section>
 
 <section id="contact">
   <h2>Contact Us</h2>
-  <div class="contact-form" style="justify-content:center; flex-direction:column; align-items:center;">
-    <form action="mailto:sharmajimushrooms@example.com" method="post" enctype="text/plain">
+  <div class="contact-form">
+    <form action="mailto:sharmajimushroom@gamil.com" method="post" enctype="text/plain">
       <input type="text" name="name" placeholder="Your Name" required>
       <input type="email" name="email" placeholder="Your Email" required>
       <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
       <input class="btn" type="submit" value="Send Message">
     </form>
 
-    <div style="margin-top:30px; text-align:center;">
-      <h3>Follow Us</h3>
-      <p>
-        📘 <a href="https://www.facebook.com/sharmajimushrooms" target="_blank">Facebook</a> | 
-        📸 <a href="https://www.instagram.com/sharmajimushrooms" target="_blank">Instagram</a> | 
-        💬 <a href="https://wa.me/9779812345678" target="_blank">WhatsApp</a>
+    <div class="contact-info">
+      <p>📘 <a href="https://www.facebook.com/sharmajimushrooms" target="_blank">Facebook</a> | 
+         📸 <a href="https://www.instagram.com/sharmajimushrooms" target="_blank">Instagram</a> | 
+         💬 <a href="https://wa.me/9779812345678" target="_blank">WhatsApp</a>
       </p>
       <p>📍 Saptari, Nepal</p>
-      <p>📧 sharmajimushrooms@example.com | 📞 +977-9812345678</p>
+      <p>📧 sharmajimushroom@gamil.com | 📞 +977-9812345678</p>
     </div>
   </div>
 </section>
