@@ -48,6 +48,17 @@ section h2::after { content:''; display:block; width:60px; height:3px; backgroun
 .quantity button:hover { background:#2e7d32; }
 .quantity input { width:50px; text-align:center; padding:5px; border-radius:5px; border:1px solid #ccc; }
 
+/* Details Button */
+.details-btn { margin-top:10px; padding:8px 15px; background:#4caf50; color:white; border:none; border-radius:5px; cursor:pointer; }
+.details-btn:hover { background:#2e7d32; }
+
+/* Modal */
+.modal { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.7); justify-content:center; align-items:center; z-index:200; }
+.modal-content { background:white; padding:25px; border-radius:12px; max-width:500px; width:90%; position:relative; text-align:center; }
+.modal-content img { width:200px; border-radius:10px; margin-bottom:15px; }
+.close { position:absolute; top:10px; right:15px; font-size:24px; cursor:pointer; color:#333; }
+.close:hover { color:#4caf50; }
+
 /* Summary & Order */
 .summary { margin-top:40px; text-align:center; font-size:1.2rem; color:#333; }
 .summary span { font-weight:bold; color:#2e7d32; }
@@ -67,7 +78,7 @@ footer { background:#2e7d32; color:white; text-align:center; padding:20px; margi
 
 <!-- Moving Banner -->
 <div class="banner">
-  <p>Sharma Ji Mushroom Farm & Research Center – Fresh Mushrooms Available Today! | <span id="datetime"></span></p>
+  <p>Sharma Ji Mushroom Farm & Research Center – Fresh Mushrooms Today! | <span id="datetime"></span></p>
 </div>
 
 <header>
@@ -95,7 +106,8 @@ footer { background:#2e7d32; color:white; text-align:center; padding:20px; margi
 <section id="products">
   <h2>Our Products - Today's Market Prices</h2>
   <div class="products">
-    <!-- Oyster -->
+
+    <!-- Product Template -->
     <div class="product">
       <img src="images/oyster.jpg" alt="Oyster Mushroom">
       <h3>Oyster Mushroom</h3>
@@ -106,9 +118,9 @@ footer { background:#2e7d32; color:white; text-align:center; padding:20px; margi
         <button onclick="increase('oyster')">+</button>
       </div>
       <p>Total: Rs <span id="oysterTotal">0</span></p>
+      <button class="details-btn" onclick="openModal('oyster')">View Details</button>
     </div>
 
-    <!-- Shiitake -->
     <div class="product">
       <img src="images/shiitake.jpg" alt="Shiitake Mushroom">
       <h3>Shiitake Mushroom</h3>
@@ -119,9 +131,9 @@ footer { background:#2e7d32; color:white; text-align:center; padding:20px; margi
         <button onclick="increase('shiitake')">+</button>
       </div>
       <p>Total: Rs <span id="shiitakeTotal">0</span></p>
+      <button class="details-btn" onclick="openModal('shiitake')">View Details</button>
     </div>
 
-    <!-- Button -->
     <div class="product">
       <img src="images/button.jpg" alt="Button Mushroom">
       <h3>Button Mushroom</h3>
@@ -132,9 +144,9 @@ footer { background:#2e7d32; color:white; text-align:center; padding:20px; margi
         <button onclick="increase('button')">+</button>
       </div>
       <p>Total: Rs <span id="buttonTotal">0</span></p>
+      <button class="details-btn" onclick="openModal('button')">View Details</button>
     </div>
 
-    <!-- Colorful -->
     <div class="product">
       <img src="images/colorful.jpg" alt="Colorful Mushrooms">
       <h3>Colorful Mushrooms</h3>
@@ -145,9 +157,9 @@ footer { background:#2e7d32; color:white; text-align:center; padding:20px; margi
         <button onclick="increase('colorful')">+</button>
       </div>
       <p>Total: Rs <span id="colorfulTotal">0</span></p>
+      <button class="details-btn" onclick="openModal('colorful')">View Details</button>
     </div>
 
-    <!-- Spawn -->
     <div class="product">
       <img src="images/spawn.jpg" alt="Mushroom Spawn">
       <h3>Mushroom Spawn</h3>
@@ -158,6 +170,7 @@ footer { background:#2e7d32; color:white; text-align:center; padding:20px; margi
         <button onclick="increase('spawn')">+</button>
       </div>
       <p>Total: Rs <span id="spawnTotal">0</span></p>
+      <button class="details-btn" onclick="openModal('spawn')">View Details</button>
     </div>
 
   </div>
@@ -168,6 +181,62 @@ footer { background:#2e7d32; color:white; text-align:center; padding:20px; margi
 
   <button class="order-btn" onclick="submitOrder()">Place Order</button>
 </section>
+
+<!-- Product Modals -->
+<div id="modal-oyster" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal('oyster')">&times;</span>
+    <h2>Oyster Mushroom</h2>
+    <img src="images/oyster.jpg" alt="Oyster Mushroom">
+    <p><strong>Protein:</strong> 3.3g per 100g</p>
+    <p><strong>Health Benefits:</strong> Boosts immunity, rich in antioxidants, heart & brain health</p>
+    <p><strong>Cultivation Tips:</strong> Keep spawn hygienic, temperature 20–25°C, maintain humidity 80–90%</p>
+  </div>
+</div>
+
+<div id="modal-shiitake" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal('shiitake')">&times;</span>
+    <h2>Shiitake Mushroom</h2>
+    <img src="images/shiitake.jpg" alt="Shiitake Mushroom">
+    <p><strong>Protein:</strong> 2.2g per 100g</p>
+    <p><strong>Health Benefits:</strong> Supports heart health, contains polysaccharides boosting immunity</p>
+    <p><strong>Cultivation Tips:</strong> Maintain logs clean, moisture 60–70%, temperature 18–24°C</p>
+  </div>
+</div>
+
+<div id="modal-button" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal('button')">&times;</span>
+    <h2>Button Mushroom</h2>
+    <img src="images/button.jpg" alt="Button Mushroom">
+    <p><strong>Protein:</strong> 3.1g per 100g</p>
+    <p><strong>Health Benefits:</strong> Rich in vitamins B & D, supports metabolism & immunity</p>
+    <p><strong>Cultivation Tips:</strong> Maintain compost hygiene, temperature 20–25°C, proper ventilation</p>
+  </div>
+</div>
+
+<div id="modal-colorful" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal('colorful')">&times;</span>
+    <h2>Colorful Mushrooms</h2>
+    <img src="images/colorful.jpg" alt="Colorful Mushrooms">
+    <p><strong>Protein:</strong> 3–4g per 100g (varies by type)</p>
+    <p><strong>Health Benefits:</strong> Rich in antioxidants & micronutrients, boosts immunity</p>
+    <p><strong>Cultivation Tips:</strong> Maintain spawn quality, light & humidity control, rotate harvests</p>
+  </div>
+</div>
+
+<div id="modal-spawn" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal('spawn')">&times;</span>
+    <h2>Mushroom Spawn</h2>
+    <img src="images/spawn.jpg" alt="Mushroom Spawn">
+    <p><strong>Quality:</strong> High-grade, contaminant-free spawn</p>
+    <p><strong>Health Benefits:</strong> Produces healthy mushrooms with high protein</p>
+    <p><strong>Usage Tips:</strong> Keep cold, avoid contamination, maintain humidity 80–90% during cultivation</p>
+  </div>
+</div>
 
 <section id="contact">
   <h2>Contact Us</h2>
@@ -194,7 +263,7 @@ function updateDateTime() {
 setInterval(updateDateTime,1000);
 updateDateTime();
 
-// Prices
+// Product Prices & Quantity
 const prices = { oyster:200, shiitake:400, button:200, colorful:500, spawn:450 };
 const products = ['oyster','shiitake','button','colorful','spawn'];
 
@@ -234,6 +303,13 @@ function submitOrder(){
   message += "\nGrand Total: Rs "+totalOrder;
   if(totalOrder===0){ alert("Please select at least one product."); return; }
   window.location.href = "mailto:sharmajimushrooms@example.com?subject=New Order&body="+encodeURIComponent(message);
+}
+
+// Modals
+function openModal(id){ document.getElementById('modal-'+id).style.display='flex'; }
+function closeModal(id){ document.getElementById('modal-'+id).style.display='none'; }
+window.onclick = function(e){
+  if(e.target.classList.contains('modal')) e.target.style.display='none';
 }
 </script>
 
