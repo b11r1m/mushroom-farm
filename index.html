@@ -1,72 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sharma Ji Mushroom Farm & Research Center</title>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-  <style>
-    * { margin:0; padding:0; box-sizing:border-box; font-family:'Roboto',sans-serif; }
-    body { background:#fdfdfd; color:#333; line-height:1.6; scroll-behavior:smooth; }
-    a { text-decoration:none; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sharma Ji Mushroom Farm & Research Center</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; font-family:'Roboto',sans-serif; }
+body { background:#fdfdfd; color:#333; line-height:1.6; scroll-behavior:smooth; }
 
-    /* Header */
-    header { background:linear-gradient(90deg,#4caf50,#2e7d32); color:white; padding:15px 0; text-align:center; position:sticky; top:0; z-index:100; }
-    header h1 { font-size:1.8rem; margin-bottom:5px; }
-    header .datetime { font-size:1rem; font-weight:normal; color:#ffeb3b; }
-    nav { display:flex; justify-content:center; gap:25px; flex-wrap:wrap; font-weight:bold; margin-top:5px; }
-    nav a { color:white; transition:color 0.3s; }
-    nav a:hover { color:#ffeb3b; }
+/* Banner Marquee */
+.banner { width:100%; background:#4caf50; color:white; padding:15px 0; overflow:hidden; position:relative; }
+.banner p { white-space:nowrap; display:inline-block; padding-left:100%; animation: scroll 20s linear infinite; font-size:1.2rem; font-weight:bold; }
+@keyframes scroll { 0% { transform: translateX(0%); } 100% { transform: translateX(-100%); } }
 
-    /* Hero Section */
-    .hero { height:450px; display:flex; justify-content:center; align-items:center; text-align:center;
-      background:url('https://images.unsplash.com/photo-1615884955479-1c48559d52e5?auto=format&fit=crop&w=1470&q=80') no-repeat center center/cover;
-      color:white; text-shadow:2px 2px 8px rgba(0,0,0,0.5); margin-bottom:50px; }
-    .hero h1 { font-size:2.8rem; max-width:900px; padding:0 20px; }
+/* Header & Navigation */
+header { text-align:center; padding:15px 0; }
+header h1 { font-size:1.8rem; color:#2e7d32; margin-bottom:5px; }
+nav { display:flex; justify-content:center; gap:25px; flex-wrap:wrap; font-weight:bold; margin-top:5px; }
+nav a { color:#4caf50; transition:color 0.3s; }
+nav a:hover { color:#2e7d32; }
 
-    /* Sections */
-    section { padding:60px 20px; max-width:1200px; margin:auto; }
-    section h2 { text-align:center; font-size:2.2rem; color:#2e7d32; margin-bottom:40px; position:relative; }
-    section h2::after { content:''; display:block; width:60px; height:3px; background:#4caf50; margin:10px auto 0; border-radius:2px; }
+/* Hero Section */
+.hero { height:400px; display:flex; justify-content:center; align-items:center; text-align:center;
+  background:url('https://images.unsplash.com/photo-1615884955479-1c48559d52e5?auto=format&fit=crop&w=1470&q=80') no-repeat center center/cover;
+  color:white; text-shadow:2px 2px 8px rgba(0,0,0,0.5); margin-bottom:50px; }
+.hero h1 { font-size:2.5rem; max-width:900px; padding:0 20px; }
 
-    /* About */
-    #about p { text-align:center; max-width:800px; margin:auto; font-size:1.1rem; color:#555; }
+/* Sections */
+section { padding:60px 20px; max-width:1200px; margin:auto; }
+section h2 { text-align:center; font-size:2.2rem; color:#2e7d32; margin-bottom:40px; position:relative; }
+section h2::after { content:''; display:block; width:60px; height:3px; background:#4caf50; margin:10px auto 0; border-radius:2px; }
 
-    /* Products Grid */
-    .products { display:grid; grid-template-columns: repeat(auto-fit, minmax(250px,1fr)); gap:30px; }
-    .product { background:white; border-radius:15px; padding:20px; box-shadow:0 10px 25px rgba(0,0,0,0.1); display:flex; flex-direction:column; align-items:center; transition:transform 0.3s, box-shadow 0.3s; }
-    .product:hover { transform:translateY(-10px); box-shadow:0 15px 35px rgba(0,0,0,0.2); }
-    .product img { width:100%; height:180px; border-radius:12px; object-fit:cover; margin-bottom:15px; }
-    .product h3 { font-size:1.3rem; color:#2e7d32; margin-bottom:8px; }
-    .product p { font-size:0.95rem; color:#555; text-align:center; }
-    .price { font-weight:bold; margin-top:5px; color:#388e3c; }
-    .quantity { display:flex; gap:10px; margin-top:10px; align-items:center; }
-    .quantity button { padding:5px 12px; background:#4caf50; color:white; border:none; border-radius:5px; font-weight:bold; cursor:pointer; transition:background 0.3s; }
-    .quantity button:hover { background:#2e7d32; }
-    .quantity input { width:50px; text-align:center; padding:5px; border-radius:5px; border:1px solid #ccc; }
+/* About */
+#about p { text-align:center; max-width:800px; margin:auto; font-size:1.1rem; color:#555; }
 
-    /* Order Summary */
-    .summary { margin-top:40px; text-align:center; font-size:1.2rem; color:#333; }
-    .summary span { font-weight:bold; color:#2e7d32; }
+/* Products Grid */
+.products { display:grid; grid-template-columns: repeat(auto-fit, minmax(250px,1fr)); gap:30px; }
+.product { background:white; border-radius:15px; padding:20px; box-shadow:0 10px 25px rgba(0,0,0,0.1); display:flex; flex-direction:column; align-items:center; transition:transform 0.3s, box-shadow 0.3s; }
+.product:hover { transform:translateY(-10px); box-shadow:0 15px 35px rgba(0,0,0,0.2); }
+.product img { width:100%; height:180px; border-radius:12px; object-fit:cover; margin-bottom:15px; }
+.product h3 { font-size:1.3rem; color:#2e7d32; margin-bottom:8px; }
+.product p { font-size:0.95rem; color:#555; text-align:center; }
+.price { font-weight:bold; margin-top:5px; color:#388e3c; }
+.quantity { display:flex; gap:10px; margin-top:10px; align-items:center; }
+.quantity button { padding:5px 12px; background:#4caf50; color:white; border:none; border-radius:5px; font-weight:bold; cursor:pointer; transition:background 0.3s; }
+.quantity button:hover { background:#2e7d32; }
+.quantity input { width:50px; text-align:center; padding:5px; border-radius:5px; border:1px solid #ccc; }
 
-    /* Order Form Button */
-    .order-btn { display:inline-block; padding:12px 30px; margin-top:20px; background:#4caf50; color:white; border-radius:50px; transition:background 0.3s, transform 0.2s; font-weight:bold; cursor:pointer; border:none; font-size:1.1rem; }
-    .order-btn:hover { background:#2e7d32; transform:scale(1.05); }
+/* Summary & Order */
+.summary { margin-top:40px; text-align:center; font-size:1.2rem; color:#333; }
+.summary span { font-weight:bold; color:#2e7d32; }
+.order-btn { display:inline-block; padding:12px 30px; margin-top:20px; background:#4caf50; color:white; border-radius:50px; transition:background 0.3s, transform 0.2s; font-weight:bold; cursor:pointer; border:none; font-size:1.1rem; }
+.order-btn:hover { background:#2e7d32; transform:scale(1.05); }
 
-    /* Contact / Footer */
-    .contact-info { text-align:center; margin-top:25px; font-size:1rem; color:#555; }
-    .contact-info a { color:#2e7d32; font-weight:bold; transition: color 0.3s; }
-    .contact-info a:hover { color:#4caf50; }
-    footer { background:#2e7d32; color:white; text-align:center; padding:20px; margin-top:40px; font-size:0.9rem; }
+/* Contact / Footer */
+.contact-info { text-align:center; margin-top:25px; font-size:1rem; color:#555; }
+.contact-info a { color:#2e7d32; font-weight:bold; transition: color 0.3s; }
+.contact-info a:hover { color:#4caf50; }
+footer { background:#2e7d32; color:white; text-align:center; padding:20px; margin-top:40px; font-size:0.9rem; }
 
-    @media(max-width:600px){ .hero h1 { font-size:2rem; } }
-  </style>
+@media(max-width:600px){ .hero h1 { font-size:2rem; } }
+</style>
 </head>
 <body>
 
+<!-- Moving Banner -->
+<div class="banner">
+  <p>Sharma Ji Mushroom Farm & Research Center – Fresh Mushrooms Available Today! | <span id="datetime"></span></p>
+</div>
+
 <header>
   <h1>Sharma Ji Mushroom Farm & Research Center</h1>
-  <div class="datetime" id="datetime"></div>
   <nav>
     <a href="#about">About</a>
     <a href="#products">Products</a>
@@ -88,14 +93,13 @@
 </section>
 
 <section id="products">
-  <h2>Our Products</h2>
+  <h2>Our Products - Today's Market Prices</h2>
   <div class="products">
-
-    <!-- Product Template -->
+    <!-- Oyster -->
     <div class="product">
       <img src="images/oyster.jpg" alt="Oyster Mushroom">
       <h3>Oyster Mushroom</h3>
-      <p>Price: Rs 200 / kg</p>
+      <p>Market Price Today: Rs <span id="oysterPrice">200</span> / kg</p>
       <div class="quantity">
         <button onclick="decrease('oyster')">-</button>
         <input type="number" id="oyster" value="0" min="0">
@@ -104,10 +108,11 @@
       <p>Total: Rs <span id="oysterTotal">0</span></p>
     </div>
 
+    <!-- Shiitake -->
     <div class="product">
       <img src="images/shiitake.jpg" alt="Shiitake Mushroom">
       <h3>Shiitake Mushroom</h3>
-      <p>Price: Rs 400 / kg</p>
+      <p>Market Price Today: Rs <span id="shiitakePrice">400</span> / kg</p>
       <div class="quantity">
         <button onclick="decrease('shiitake')">-</button>
         <input type="number" id="shiitake" value="0" min="0">
@@ -116,10 +121,11 @@
       <p>Total: Rs <span id="shiitakeTotal">0</span></p>
     </div>
 
+    <!-- Button -->
     <div class="product">
       <img src="images/button.jpg" alt="Button Mushroom">
       <h3>Button Mushroom</h3>
-      <p>Price: Rs 200 / kg</p>
+      <p>Market Price Today: Rs <span id="buttonPrice">200</span> / kg</p>
       <div class="quantity">
         <button onclick="decrease('button')">-</button>
         <input type="number" id="button" value="0" min="0">
@@ -128,10 +134,11 @@
       <p>Total: Rs <span id="buttonTotal">0</span></p>
     </div>
 
+    <!-- Colorful -->
     <div class="product">
       <img src="images/colorful.jpg" alt="Colorful Mushrooms">
       <h3>Colorful Mushrooms</h3>
-      <p>Price: Rs 500 / kg</p>
+      <p>Market Price Today: Rs <span id="colorfulPrice">500</span> / kg</p>
       <div class="quantity">
         <button onclick="decrease('colorful')">-</button>
         <input type="number" id="colorful" value="0" min="0">
@@ -140,10 +147,11 @@
       <p>Total: Rs <span id="colorfulTotal">0</span></p>
     </div>
 
+    <!-- Spawn -->
     <div class="product">
       <img src="images/spawn.jpg" alt="Mushroom Spawn">
       <h3>Mushroom Spawn</h3>
-      <p>Price: Rs 450 / kg</p>
+      <p>Market Price Today: Rs <span id="spawnPrice">450</span> / kg</p>
       <div class="quantity">
         <button onclick="decrease('spawn')">-</button>
         <input type="number" id="spawn" value="0" min="0">
@@ -178,60 +186,55 @@
 </footer>
 
 <script>
-  // Date & Time
-  function updateDateTime() {
-    const now = new Date();
-    document.getElementById('datetime').innerText = now.toLocaleString();
-  }
-  setInterval(updateDateTime, 1000);
-  updateDateTime();
+// Date & Time
+function updateDateTime() {
+  const now = new Date();
+  document.getElementById('datetime').innerText = now.toLocaleString();
+}
+setInterval(updateDateTime,1000);
+updateDateTime();
 
-  // Prices
-  const prices = { oyster:200, shiitake:400, button:200, colorful:500, spawn:450 };
-  const products = ['oyster','shiitake','button','colorful','spawn'];
+// Prices
+const prices = { oyster:200, shiitake:400, button:200, colorful:500, spawn:450 };
+const products = ['oyster','shiitake','button','colorful','spawn'];
 
-  function increase(id){
-    const input = document.getElementById(id);
-    input.value = parseInt(input.value)+1;
-    updateTotal(id);
-  }
-  function decrease(id){
-    const input = document.getElementById(id);
-    if(input.value>0) input.value = parseInt(input.value)-1;
-    updateTotal(id);
-  }
-  function updateTotal(id){
+function increase(id){
+  const input = document.getElementById(id);
+  input.value = parseInt(input.value)+1;
+  updateTotal(id);
+}
+function decrease(id){
+  const input = document.getElementById(id);
+  if(input.value>0) input.value = parseInt(input.value)-1;
+  updateTotal(id);
+}
+function updateTotal(id){
+  const qty = parseInt(document.getElementById(id).value);
+  document.getElementById(id+'Total').innerText = qty*prices[id];
+  updateGrandTotal();
+}
+function updateGrandTotal(){
+  let total = 0;
+  products.forEach(id => {
     const qty = parseInt(document.getElementById(id).value);
-    document.getElementById(id+'Total').innerText = qty*prices[id];
-    updateGrandTotal();
-  }
-  function updateGrandTotal(){
-    let total = 0;
-    products.forEach(id => {
-      const qty = parseInt(document.getElementById(id).value);
-      total += qty*prices[id];
-    });
-    document.getElementById('grandTotal').innerText = total;
-  }
-
-  function submitOrder(){
-    let message = "Order Details:\n";
-    let totalOrder = 0;
-    products.forEach(id => {
-      const qty = parseInt(document.getElementById(id).value);
-      if(qty>0){
-        message += id.charAt(0).toUpperCase()+id.slice(1)+" : "+qty+" kg → Rs "+(qty*prices[id])+"\n";
-        totalOrder += qty*prices[id];
-      }
-    });
-    message += "\nGrand Total: Rs "+totalOrder;
-    if(totalOrder === 0){
-      alert("Please select at least one product.");
-      return;
+    total += qty*prices[id];
+  });
+  document.getElementById('grandTotal').innerText = total;
+}
+function submitOrder(){
+  let message = "Order Details:\n";
+  let totalOrder = 0;
+  products.forEach(id => {
+    const qty = parseInt(document.getElementById(id).value);
+    if(qty>0){
+      message += id.charAt(0).toUpperCase()+id.slice(1)+" : "+qty+" kg → Rs "+(qty*prices[id])+"\n";
+      totalOrder += qty*prices[id];
     }
-    // Open email client
-    window.location.href = "mailto:sharmajimushrooms@example.com?subject=New Order&body="+encodeURIComponent(message);
-  }
+  });
+  message += "\nGrand Total: Rs "+totalOrder;
+  if(totalOrder===0){ alert("Please select at least one product."); return; }
+  window.location.href = "mailto:sharmajimushrooms@example.com?subject=New Order&body="+encodeURIComponent(message);
+}
 </script>
 
 </body>
