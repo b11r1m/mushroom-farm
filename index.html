@@ -4,256 +4,232 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Sharma Ji Mushroom Farm & Research Center</title>
-
-<link href="https://cdn.discordapp.com/attachments/1437415378958417980/1467363500400705764/0B411F1D-9E87-4E9B-948A-9B9598A9A8A9.png?ex=69801c40&is=697ecac0&hm=a0e731fe4c25ef868e1a2e1c0491657a37d237da9eb7b0789e8a079c0df8101e" rel="stylesheet">
-
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:Poppins,sans-serif}
-body{background:#f7faf7;color:#333}
+/* General */
+* { margin:0; padding:0; box-sizing:border-box; font-family:'Roboto',sans-serif; }
+body { background:#fdfdfd; color:#333; line-height:1.6; scroll-behavior:smooth; }
 
-/* Language Toggle */
-.lang-toggle{
-position:fixed;top:15px;right:15px;z-index:999;
-background:#2e7d32;color:#fff;
-border-radius:20px;padding:6px 14px;
-cursor:pointer;font-weight:600
-}
-
-/* Banner */
-.banner{
-background:#2e7d32;color:#fff;
-padding:12px;overflow:hidden
-}
-.banner span{
-display:inline-block;
-white-space:nowrap;
-animation:scroll 18s linear infinite;
-font-weight:700
-}
-@keyframes scroll{
-0%{transform:translateX(100%)}
-100%{transform:translateX(-100%)}
-}
+/* Banner Marquee */
+.banner { width:100%; background:#4caf50; color:white; padding:12px 0; overflow:hidden; position:relative; }
+.banner p { white-space:nowrap; display:inline-block; padding-left:100%; animation: scroll 30s linear infinite; font-size:1.1rem; font-weight:bold; }
+@keyframes scroll { 0% { transform: translateX(0%); } 100% { transform: translateX(-100%); } }
 
 /* Header */
-header{
-display:flex;align-items:center;
-padding:12px 20px;
-background:#fff;
-box-shadow:0 4px 12px rgba(0,0,0,.1)
-}
-header img{height:60px;margin-right:12px}
-.brand h1{font-size:1.8rem;color:#2e7d32;font-weight:900}
-.brand small{color:#4caf50;font-weight:600}
+header { display:flex; align-items:center; justify-content:space-between; padding:10px 20px; background:#fff; box-shadow:0 2px 8px rgba(0,0,0,0.1); position:sticky; top:0; z-index:100; }
+header .logo { display:flex; align-items:center; }
+header .logo img { height:60px; margin-right:15px; border-radius:10px; }
+.brand-text { display:flex; flex-direction:column; line-height:1.1; }
+.brand-main { font-size:1.6rem; font-weight:900; color:#2e7d32; letter-spacing:1px; }
+.brand-sub { font-size:1rem; font-weight:700; color:#4caf50; }
+.brand-tag { font-size:0.85rem; color:#777; }
+header nav { display:flex; gap:20px; font-weight:bold; }
+header nav a { color:#4caf50; text-decoration:none; transition: color 0.3s; }
+header nav a:hover { color:#2e7d32; }
 
 /* Hero */
-.hero{
-height:420px;
-background:url("https://cdn.discordapp.com/attachments/1437415378958417980/1467363566939148474/IMG_9059.jpg?ex=69801c50&is=697ecad0&hm=3d9910c7cc9cbe63d987a0ab2f1bd13a595bc277a5f3b17c9cc29646deaa5948") center/cover no-repeat;
-display:flex;align-items:center;justify-content:center
-}
-.hero h2{
-background:rgba(0,0,0,.6);
-color:#fff;padding:25px;
-border-radius:15px;
-font-size:2.3rem;text-align:center
-}
+.hero-custom { height:420px; background-image:url('https://cdn.discordapp.com/attachments/1437415378958417980/1467363566939148474/IMG_9059.jpg?ex=69801c50&is=697ecad0&hm=3d9910c7cc9cbe63d987a0ab2f1bd13a595bc277a5f3b17c9cc29646deaa5948'); background-size:cover; background-position:center; background-attachment:fixed; display:flex; align-items:center; justify-content:center; }
+.hero-overlay { width:100%; height:100%; background: rgba(0,0,0,0.55); display:flex; align-items:center; justify-content:center; text-align:center; padding:20px; }
+.hero-overlay h1 { color:white; font-size:2.8rem; max-width:1000px; text-shadow:2px 4px 10px rgba(0,0,0,0.8); }
 
-/* Section */
-section{padding:60px 20px;max-width:1200px;margin:auto}
-section h2{text-align:center;color:#2e7d32;font-size:2.2rem;margin-bottom:40px}
+/* Sections */
+section { padding:60px 20px; max-width:1200px; margin:auto; }
+section h2 { text-align:center; font-size:2.2rem; color:#2e7d32; margin-bottom:40px; position:relative; }
+section h2::after { content:''; display:block; width:60px; height:3px; background:#4caf50; margin:10px auto 0; border-radius:2px; }
 
-/* Products */
-.products{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:30px
-}
-.product{
-background:#fff;
-padding:20px;
-border-radius:15px;
-box-shadow:0 10px 25px rgba(0,0,0,.1);
-text-align:center
-}
-.product img{
-width:100%;height:180px;
-object-fit:cover;border-radius:12px
-}
-.product h3{margin:10px 0;color:#2e7d32}
-.qty{
-display:flex;justify-content:center;gap:10px;margin:10px 0
-}
-.qty button{
-background:#4caf50;color:#fff;
-border:none;padding:6px 14px;
-border-radius:6px;font-weight:700;cursor:pointer
-}
-.qty input{
-width:60px;text-align:center
-}
-.price{font-weight:700}
+/* About Us */
+#about p { font-size:1rem; line-height:1.8; color:#555; text-align:justify; margin-bottom:15px; }
+#about .intro { text-align:center; font-weight:bold; font-size:1.1rem; color:#2e7d32; margin-bottom:20px; }
+#about img { display:block; margin:30px auto 0; max-width:100%; border-radius:15px; box-shadow:0 10px 20px rgba(0,0,0,0.1); }
 
-/* Order */
-.summary{text-align:center;margin-top:30px;font-size:1.2rem}
-.order-btn{
-margin:20px auto;display:block;
-background:#2e7d32;color:#fff;
-padding:14px 30px;
-border-radius:30px;border:none;
-font-size:1.1rem;font-weight:700;
-cursor:pointer
-}
+/* Products Grid */
+.products { display:grid; grid-template-columns: repeat(auto-fit, minmax(250px,1fr)); gap:30px; }
+.product { background:white; border-radius:15px; padding:20px; box-shadow:0 10px 25px rgba(0,0,0,0.1); display:flex; flex-direction:column; align-items:center; transition:transform 0.3s, box-shadow 0.3s; }
+.product:hover { transform:translateY(-10px); box-shadow:0 15px 35px rgba(0,0,0,0.2); }
+.product img { width:100%; height:180px; border-radius:12px; object-fit:cover; margin-bottom:15px; }
+.product h3 { font-size:1.3rem; color:#2e7d32; margin-bottom:8px; }
+.product p { font-size:0.95rem; color:#555; text-align:center; }
+.price { font-weight:bold; margin-top:5px; color:#388e3c; }
+.quantity { display:flex; gap:10px; margin-top:10px; align-items:center; }
+.quantity button { padding:5px 12px; background:#4caf50; color:white; border:none; border-radius:5px; font-weight:bold; cursor:pointer; transition:background 0.3s; }
+.quantity button:hover { background:#2e7d32; }
+.quantity input { width:50px; text-align:center; padding:5px; border-radius:5px; border:1px solid #ccc; readonly; }
 
-<script>
-function openEsewa(){
-  const amount = document.getElementById("grandTotal").innerText;
-  const phone = "9810536181";
+/* Details Button */
+.details-btn { margin-top:10px; padding:8px 15px; background:#4caf50; color:white; border:none; border-radius:5px; cursor:pointer; }
+.details-btn:hover { background:#2e7d32; }
 
-  const esewaURL =
-    "https://esewa.com.np/#/send-money" +
-    "?mobile=" + phone +
-    "&amount=" + amount;
+/* Modal */
+.modal { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.7); justify-content:center; align-items:center; z-index:200; }
+.modal-content { background:white; padding:25px; border-radius:12px; max-width:500px; width:90%; position:relative; text-align:center; }
+.modal-content img { width:200px; border-radius:10px; margin-bottom:15px; }
+.close { position:absolute; top:10px; right:15px; font-size:24px; cursor:pointer; color:#333; }
+.close:hover { color:#4caf50; }
 
-  window.open(esewaURL, "_blank");
-}
+/* Summary & Order */
+.summary { margin-top:40px; text-align:center; font-size:1.2rem; color:#333; }
+.summary span { font-weight:bold; color:#2e7d32; }
+.order-btn { display:inline-block; padding:12px 30px; margin-top:20px; background:#4caf50; color:white; border-radius:50px; transition:background 0.3s, transform 0.2s; font-weight:bold; cursor:pointer; border:none; font-size:1.1rem; }
+.order-btn:hover { background:#2e7d32; transform:scale(1.05); }
 
-function openKhalti(){
-  const amount = document.getElementById("grandTotal").innerText;
-  const phone = "9810536181";
+/* Contact / Footer */
+.contact-info { text-align:center; margin-top:25px; font-size:1rem; color:#555; }
+.contact-info a { color:#2e7d32; font-weight:bold; transition: color 0.3s; }
+.contact-info a:hover { color:#4caf50; }
+footer { background:#2e7d32; color:white; text-align:center; padding:20px; margin-top:40px; font-size:0.9rem; }
 
-  const khaltiURL =
-    "https://khalti.com/send-money" +
-    "?mobile=" + phone +
-    "&amount=" + amount;
-
-  window.open(khaltiURL, "_blank");
-}
-</script>
-
-
-/* Footer */
-footer{
-background:#2e7d32;color:#fff;
-text-align:center;padding:20px
+@media(max-width:600px){ 
+  .hero-overlay h1 { font-size:2rem; } 
+  header h1 { font-size:1.2rem; } 
 }
 </style>
 </head>
-
 <body>
 
-<div class="lang-toggle" onclick="toggleLang()">नेपाली / EN</div>
-
+<!-- Banner -->
 <div class="banner">
-<span id="bannerText">Fresh Mushrooms from Saptari, Nepal | <span id="time"></span></span>
+  <p>Sharma Ji Mushroom Farm & Research Center – Fresh Mushrooms Today! | <span id="datetime"></span></p>
 </div>
 
+<!-- Header -->
 <header>
-<img src="https://cdn-icons-png.flaticon.com/512/2909/2909767.png">
-<div class="brand">
-<h1>Sharma Ji Mushroom Farm</h1>
-<small>& Research Center – Saptari, Nepal</small>
-</div>
+  <div class="logo">
+    <img src="images/logo.jpg" alt="Logo">
+    <div class="brand-text">
+      <span class="brand-main">Sharma Ji</span>
+      <span class="brand-sub">Mushroom Farm</span>
+      <span class="brand-tag">& Research Center</span>
+    </div>
+  </div>
+  <nav>
+    <a href="#about">About</a>
+    <a href="#products">Products</a>
+    <a href="#contact">Contact</a>
+  </nav>
 </header>
 
-<div class="hero">
-<h2 id="heroText">Fresh Mushrooms & High-Quality Spawn from Saptari, Nepal</h2>
+<!-- Order Method Modal -->
+<div id="orderModal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeOrderModal()">&times;</span>
+    <h2>Select Order Method</h2>
+    <p style="margin-bottom:20px">How would you like to place your order?</p>
+    <button class="order-btn" style="width:100%;margin-bottom:15px" onclick="orderWhatsApp()">📱 Order via WhatsApp</button>
+    <button class="order-btn" style="width:100%;background:#1565c0" onclick="orderEmail()">📧 Order via Email</button>
+  </div>
 </div>
 
-<section>
-<h2 id="productTitle">Our Products</h2>
-
-<div class="products" id="products"></div>
-
-<div class="summary">
-<span id="totalText">Total:</span> Rs <span id="grandTotal">0</span><br>
-<small>(Delivery charge Rs 50)</small>
-</div>
-
-<button class="order-btn" onclick="placeOrder()">Place Order</button>
-
-<div class="payment">
-<button class="esewa" onclick="openEsewa()">Pay via eSewa</button>
-<button class="khalti" onclick="openKhalti()">Pay via Khalti</button>
-</div>
+<!-- Hero -->
+<section class="hero-custom">
+  <div class="hero-overlay">
+    <h1>Fresh Mushrooms & High-Quality Spawn from Saptari, Nepal</h1>
+  </div>
 </section>
 
+<!-- About -->
+<section id="about">
+  <h2>About Us</h2>
+  <p class="intro">We provide every information required for mushroom cultivation</p>
+  <p>At Sharma Ji Mushroom Farm & Research Center, we are dedicated to empowering farmers, entrepreneurs, and agriculture enthusiasts with complete, practical, and research-based knowledge for mushroom cultivation.
+From understanding mushroom biology to spawn production, cultivation techniques, disease management, and post-harvest handling, we provide every essential piece of information required to grow mushrooms successfully—whether you are a beginner or a commercial producer.
+Rooted in real field experience and continuous research, our mission is to promote modern, sustainable, and profitable mushroom farming. We believe that access to the right knowledge can transform livelihoods, strengthen local agriculture, and create new opportunities for income generation.
+We don’t just grow mushrooms—we grow knowledge, confidence, and success.</p>
+<p>“Growing Mushrooms. Growing Knowledge. Growing Futures.”</p>
+<img src="images/home.jpg" alt="Mushroom Cultivation">
+</section>
+
+<!-- Products -->
+<section id="products">
+  <h2>Our Products - Today's Market Prices</h2>
+  <div class="products">
+    <!-- Example Product -->
+    <div class="product">
+      <img src="images/oyster.jpg" alt="Oyster Mushroom">
+      <h3>Oyster Mushroom</h3>
+      <p>Price: Rs <span id="oysterPrice">200</span> / kg</p>
+      <div class="quantity">
+        <button onclick="decrease('oyster')">-</button>
+        <input type="number" id="oyster" value="0" min="0" readonly>
+        <button onclick="increase('oyster')">+</button>
+      </div>
+      <p>Total: Rs <span id="oysterTotal">0</span></p>
+      <button class="details-btn" onclick="openModal('oyster')">View Details</button>
+    </div>
+    <!-- Add other products here in the same structure (shiitake, button, colorful, spawn) -->
+  </div>
+  <div class="summary">Grand Total: Rs <span id="grandTotal">0</span></div>
+  <button class="order-btn" onclick="openOrderModal()">Place Order</button>
+</section>
+
+<!-- Modals -->
+<div id="modal-oyster" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal('oyster')">&times;</span>
+    <h2>Oyster Mushroom</h2>
+    <img src="images/oyster.jpg" alt="Oyster">
+    <p><strong>Protein:</strong> 3.3g per 100g</p>
+    <p><strong>Health Benefits:</strong> Boosts immunity, rich in antioxidants, heart & brain health</p>
+    <p><strong>Cultivation Tips:</strong> Keep spawn hygienic, temp 20–25°C, humidity 80–90%</p>
+  </div>
+</div>
+
+<!-- Contact -->
+<section id="contact">
+  <h2>Contact Us</h2>
+  <div class="contact-info">
+    <p>📘 <a href="https://www.facebook.com/b11r1m" target="_blank">Facebook</a> | 
+       📸 <a href="https://www.instagram.com/b11r1m" target="_blank">Instagram</a> | 
+       💬 <a href="https://wa.me/9779810536181" target="_blank">WhatsApp</a>
+    </p>
+    <p>📍 Chhinnamasta 03, Sakhada ,Saptari, Nepal</p>
+    <p>📧 sharmajimushroom@gmail.com | 📞 +977-9810536181</p>
+  </div>
+</section>
+
+<!-- Footer -->
 <footer>
-© 2026 Sharma Ji Mushroom Farm & Research Center
+  &copy; 2026 Sharma Ji Mushroom Farm & Research Center, Saptari, Nepal
 </footer>
 
+<!-- JS -->
 <script>
-/* Time */
-setInterval(()=>{time.innerText=new Date().toLocaleString()},1000)
+// Date & Time
+function updateDateTime() {
+  const now = new Date();
+  document.getElementById('datetime').innerText = now.toLocaleString();
+}
+setInterval(updateDateTime,1000);
+updateDateTime();
 
-/* Products */
-const productsData=[
-{name:"Oyster Mushroom",price:200},
-{name:"Button Mushroom",price:400},
-{name:"Shiitake Mushroom",price:700},
-{name:"Milky Mushroom",price:300},
-{name:"Colorful Oyster",price:350},
-{name:"Spawn (per kg)",price:450}
-]
+// Product Logic
+const prices = { oyster:200 };
+const products = ['oyster'];
+function increase(id){ document.getElementById(id).value=parseInt(document.getElementById(id).value)+1; updateTotal(id);}
+function decrease(id){ const input=document.getElementById(id); if(input.value>0) input.value=parseInt(input.value)-1; updateTotal(id);}
+function updateTotal(id){ const qty=parseInt(document.getElementById(id).value); document.getElementById(id+'Total').innerText=qty*prices[id]; updateGrandTotal();}
+function updateGrandTotal(){ let total=0; products.forEach(id=>{ total+=parseInt(document.getElementById(id).value)*prices[id]; }); document.getElementById('grandTotal').innerText=total; }
 
-const productsDiv=document.getElementById("products")
-productsData.forEach((p,i)=>{
-productsDiv.innerHTML+=`
-<div class="product">
-<img src="https://images.unsplash.com/photo-1589927986089-35812386c8ad">
-<h3>${p.name}</h3>
-<p class="price">Rs ${p.price} / kg</p>
-<div class="qty">
-<button onclick="changeQty(${i},-0.5)">-</button>
-<input id="q${i}" value="0" readonly>
-<button onclick="changeQty(${i},0.5)">+</button>
-</div>
-<p>Total: Rs <span id="t${i}">0</span></p>
-</div>`
-})
+// Modals
+function openModal(id){ document.getElementById('modal-'+id).style.display='flex'; }
+function closeModal(id){ document.getElementById('modal-'+id).style.display='none'; }
+window.onclick = function(e){ if(e.target.classList.contains('modal')) e.target.style.display='none'; }
 
-function changeQty(i,val){
-let q=document.getElementById("q"+i)
-let v=Math.max(0,parseFloat(q.value)+val)
-q.value=v.toFixed(1)
-document.getElementById("t"+i).innerText=v*productsData[i].price
-calcTotal()
+// Order Modal
+function openOrderModal(){ if(parseInt(document.getElementById('grandTotal').innerText)===0){alert("Please select at least one product."); return;} document.getElementById('orderModal').style.display='flex'; }
+function closeOrderModal(){ document.getElementById('orderModal').style.display='none'; }
+
+function generateOrderMessage(){
+  let msg="🧺 *New Mushroom Order*%0A%0A"; let total=0;
+  products.forEach(id=>{
+    let qty=parseInt(document.getElementById(id).value);
+    if(qty>0){ let cost=qty*prices[id]; msg+=`• ${id.toUpperCase()} — ${qty} kg → Rs ${cost}%0A`; total+=cost;}
+  });
+  msg+=`%0A💰 *Grand Total:* Rs ${total}%0A%0A📍 Location: Saptari, Nepal`;
+  return msg;
 }
 
-function calcTotal(){
-let sum=50
-productsData.forEach((p,i)=>{
-sum+=parseFloat(document.getElementById("t"+i).innerText)
-})
-grandTotal.innerText=sum
-}
-
-/* Order */
-function placeOrder(){
-let msg="New Order:%0A"
-productsData.forEach((p,i)=>{
-let q=document.getElementById("q"+i).value
-if(q>0) msg+=`${p.name} - ${q}kg%0A`
-})
-msg+=`Total Rs ${grandTotal.innerText}`
-window.open(`https://wa.me/9779810536181?text=${msg}`)
-}
-
-/* Payment */
-function openEsewa(){window.open("https://esewa.com.np")}
-function openKhalti(){window.open("https://khalti.com")}
-
-/* Language */
-let nep=false
-function toggleLang(){
-nep=!nep
-heroText.innerText=nep?
-"सप्तरी नेपालबाट ताजा च्याउ तथा गुणस्तरीय स्पन":
-"Fresh Mushrooms & High-Quality Spawn from Saptari, Nepal"
-productTitle.innerText=nep?"हाम्रा उत्पादनहरू":"Our Products"
-totalText.innerText=nep?"जम्मा रकम:":"Total:"
-}
+function orderWhatsApp(){ window.open(`https://wa.me/9779810536181?text=${generateOrderMessage()}`,"_blank"); }
+function orderEmail(){ let body=decodeURIComponent(generateOrderMessage()).replace(/\*/g,""); window.location.href=`mailto:sharmajimushroom@gmail.com?subject=New Mushroom Order&body=${encodeURIComponent(body)}`; }
 </script>
-
 </body>
 </html>
