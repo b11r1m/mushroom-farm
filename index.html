@@ -219,8 +219,8 @@ function decrease(id){
   }
 }
 
-function updateTotal(id){ const qty=parseInt(document.getElementById(id).value); document.getElementById(id+'Total').innerText=qty*prices[id]; updateGrandTotal();}
-function updateGrandTotal(){ let total=0; products.forEach(id=>{ total+=parseInt(document.getElementById(id).value)*prices[id]; }); document.getElementById('grandTotal').innerText=total; }
+function updateTotal(id){ const qty = parseFloat(document.getElementById(id).value); document.getElementById(id+'Total').innerText=qty*prices[id]; updateGrandTotal();}
+function updateGrandTotal(){ let total=0; products.forEach(id=>{ total+=const parseFloat(document.getElementById(id).value);)*prices[id]; }); document.getElementById('grandTotal').innerText=total; }
 
 // Modals
 function openModal(id){ document.getElementById('modal-'+id).style.display='flex'; }
