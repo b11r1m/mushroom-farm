@@ -105,15 +105,32 @@ font-size:1.1rem;font-weight:700;
 cursor:pointer
 }
 
-/* Payment */
-.payment{text-align:center;margin-top:20px}
-.payment button{
-margin:10px;padding:12px 20px;
-border:none;border-radius:10px;
-font-weight:700;cursor:pointer
+<script>
+function openEsewa(){
+  const amount = document.getElementById("grandTotal").innerText;
+  const phone = "9810536181";
+
+  const esewaURL =
+    "https://esewa.com.np/#/send-money" +
+    "?mobile=" + phone +
+    "&amount=" + amount;
+
+  window.open(esewaURL, "_blank");
 }
-.esewa{background:#60bb46;color:#fff}
-.khalti{background:#5a2d82;color:#fff}
+
+function openKhalti(){
+  const amount = document.getElementById("grandTotal").innerText;
+  const phone = "9810536181";
+
+  const khaltiURL =
+    "https://khalti.com/send-money" +
+    "?mobile=" + phone +
+    "&amount=" + amount;
+
+  window.open(khaltiURL, "_blank");
+}
+</script>
+
 
 /* Footer */
 footer{
