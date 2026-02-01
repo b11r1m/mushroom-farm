@@ -150,7 +150,7 @@ We don’t just grow mushrooms—we grow knowledge, confidence, and success.</p>
       <p>Price: Rs <span id="oysterPrice">200</span> / kg</p>
       <div class="quantity">
         <button onclick="decrease('oyster')">-</button>
-        <input type="number" id="oyster" value="0" min="0" readonly>
+<input type="number" id="oyster" value="0" min="0" step="0.5">
         <button onclick="increase('oyster')">+</button>
       </div>
       <p>Total: Rs <span id="oysterTotal">0</span></p>
@@ -205,8 +205,20 @@ updateDateTime();
 // Product Logic
 const prices = { oyster:200 };
 const products = ['oyster'];
-function increase(id){ document.getElementById(id).value=parseInt(document.getElementById(id).value)+1; updateTotal(id);}
-function decrease(id){ const input=document.getElementById(id); if(input.value>0) input.value=parseInt(input.value)-1; updateTotal(id);}
+function increase(id){
+  const input = document.getElementById(id);
+  input.value = (parseFloat(input.value) + 0.5).toFixed(1);
+  updateTotal(id);
+}
+
+function decrease(id){
+  const input = document.getElementById(id);
+  if(parseFloat(input.value) >= 0.5){
+    input.value = (parseFloat(input.value) - 0.5).toFixed(1);
+    updateTotal(id);
+  }
+}
+
 function updateTotal(id){ const qty=parseInt(document.getElementById(id).value); document.getElementById(id+'Total').innerText=qty*prices[id]; updateGrandTotal();}
 function updateGrandTotal(){ let total=0; products.forEach(id=>{ total+=parseInt(document.getElementById(id).value)*prices[id]; }); document.getElementById('grandTotal').innerText=total; }
 
