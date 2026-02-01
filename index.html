@@ -108,12 +108,13 @@ footer { background:#2e7d32; color:white; text-align:center; padding:20px; margi
   </nav>
 </header>
 
-<!-- Order Method Modal -->
 <div id="orderModal" class="modal">
   <div class="modal-content">
     <span class="close" onclick="closeOrderModal()">&times;</span>
     <h2>Select Order Method</h2>
-    <p style="margin-bottom:20px">How would you like to place your order?</p>
+    <p style="margin-bottom:15px">Where should we deliver your order?</p>
+    <input type="text" id="customerLocation" placeholder="Enter your delivery address" style="width:100%; padding:10px; border-radius:5px; border:1px solid #ccc; margin-bottom:20px;" />
+
     <button class="order-btn" style="width:100%;margin-bottom:15px" onclick="orderWhatsApp()">📱 Order via WhatsApp</button>
     <button class="order-btn" style="width:100%;background:#1565c0" onclick="orderEmail()">📧 Order via Email</button>
   </div>
@@ -219,14 +220,22 @@ function openOrderModal(){ if(parseInt(document.getElementById('grandTotal').inn
 function closeOrderModal(){ document.getElementById('orderModal').style.display='none'; }
 
 function generateOrderMessage(){
-  let msg="🧺 *New Mushroom Order*%0A%0A"; let total=0;
+  const location = document.getElementById('customerLocation').value || "Not Provided";
+  let msg="🧺 *New Mushroom Order*%0A%0A"; 
+  let total=0;
   products.forEach(id=>{
     let qty=parseInt(document.getElementById(id).value);
-    if(qty>0){ let cost=qty*prices[id]; msg+=`• ${id.toUpperCase()} — ${qty} kg → Rs ${cost}%0A`; total+=cost;}
+    if(qty>0){ 
+      let cost = qty * prices[id];
+      msg += `• ${id.toUpperCase()} — ${qty} kg → Rs ${cost}%0A`; 
+      total += cost;
+    }
   });
-  msg+=`%0A💰 *Grand Total:* Rs ${total}%0A%0A📍 Location: Saptari, Nepal`;
+  msg += `%0A💰 *Grand Total:* Rs ${total}%0A`;
+  msg += `%0A📍 Delivery Location: ${encodeURIComponent(location)}`;
   return msg;
 }
+
 
 function orderWhatsApp(){ window.open(`https://wa.me/9779810536181?text=${generateOrderMessage()}`,"_blank"); }
 function orderEmail(){ let body=decodeURIComponent(generateOrderMessage()).replace(/\*/g,""); window.location.href=`mailto:sharmajimushroom@gmail.com?subject=New Mushroom Order&body=${encodeURIComponent(body)}`; }
